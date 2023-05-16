@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Player Data Display</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bgimg"></div>
+    <div class="info_box">
+        <div class="container">
+            <div class="imagecolumn">
+                <div id="imageContainer"></div>
+            </div>
+            <div class="textcolumn">
+                <div id="playerName"></div>
+                <div class="countryrole">
+                    <div id="playerCountry"></div>
+                    <div id="playerRole"></div>
+                </div>
+                <div id="playerPrice"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        window.onload = function() {
+            var playerData = JSON.parse(sessionStorage.getItem('playerData'));
+            console.log(playerData);
+            document.getElementById("playerName").innerHTML = "<p>" + playerData.name+"</p>";
+            document.getElementById("playerCountry").innerHTML = "<p> Country: " + playerData.country+"</p>";
+            document.getElementById("playerRole").innerHTML = "<p> Role: " + playerData.role+"</p>";
+            document.getElementById("playerPrice").innerHTML = "<p> Price: " + playerData.price+"lacs</p>";
+
+            var userInput = JSON.parse(sessionStorage.getItem('playerId'));
+            console.log(userInput);
+            var imageSource = "/images/"+ userInput + ".jpg"; 
+            imageContainer.innerHTML = "<img src='" + imageSource + "' alt='Image " + userInput + "'>";
+        };
+        
+            
+    </script>
+</body>
+</html>
